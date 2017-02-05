@@ -43,6 +43,6 @@ if [ $location = "Office" ]; then
 else
   npm config delete proxy
   npm config delete https-proxy
-  git config --global remove http.proxy
+  git config --global --unsethttp.proxy
 fi
 
