@@ -11,7 +11,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to Christof's needs...
-
+# set global environment variables in ~/data/etc/env.sh
 BINDIR=/Users/tzhlach2/data/bin
 MVN_HOME=$BINDIR/apache-maven
 
@@ -22,14 +22,6 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=$PATH:$MVN_HOME/bin
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
 export EDITOR=vim
-
-
-
-# global system settings
-# move to http://stackoverflow.com/questions/25385934/setting-environment-variables-via-launchd-conf-no-longer-works-in-os-x-yosemite
-#launchctl setenv IDEA_VM_OPTIONS $HOME/data/etc/idea.vmoptions
-#launchctl setenv JBOSS_HOME $BINDIR/jboss
-#export NEO_ENV=LOCAL
 
 # alias
 . ~/.bash_aliases
