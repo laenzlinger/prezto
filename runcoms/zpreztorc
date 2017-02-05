@@ -30,6 +30,9 @@ zstyle ':prezto:load' pmodule \
   'environment' \
   'terminal' \
   'editor' \
+  'git' \
+  'homebrew' \
+  'osx' \
   'history' \
   'directory' \
   'spectrum' \

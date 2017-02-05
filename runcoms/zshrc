@@ -10,4 +10,39 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+# Customize to Christof's needs...
+
+BINDIR=/Users/tzhlach2/data/bin
+MVN_HOME=$BINDIR/apache-maven
+
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=$PATH:$MVN_HOME/bin
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
+export NEO_ENV=LOCAL
+
+# global system settings
+# move to http://stackoverflow.com/questions/25385934/setting-environment-variables-via-launchd-conf-no-longer-works-in-os-x-yosemite
+launchctl setenv IDEA_VM_OPTIONS $HOME/data/etc/idea.vmoptions
+launchctl setenv JBOSS_HOME $BINDIR/jboss
+
+. ~/.bash_aliases
+
+# proxies
+location=`networksetup -getcurrentlocation`
+if [ $location = "Office" ]; then
+  iapc=scapp-console.swisscom.com
+  export http_proxy=proxy.corproot.net:8079
+  export https_proxy=$http_proxy
+  export no_proxy=api.$iapc,login.$iapc,doppler.$iapc,uaa.$iapc
+  npm config set proxy http://$http_proxy
+  npm config set https-proxy http://$http_proxy
+  git config --global http.proxy http://$http_proxy
+else
+  npm config delete proxy
+  npm config delete https-proxy
+  git config --global remove http.proxy
+fi
+
