@@ -21,16 +21,24 @@ export NVM_DIR="$HOME/.nvm"
 export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=$PATH:$MVN_HOME/bin
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
-export NEO_ENV=LOCAL
+export EDITOR=vim
+
+
 
 # global system settings
 # move to http://stackoverflow.com/questions/25385934/setting-environment-variables-via-launchd-conf-no-longer-works-in-os-x-yosemite
-launchctl setenv IDEA_VM_OPTIONS $HOME/data/etc/idea.vmoptions
-launchctl setenv JBOSS_HOME $BINDIR/jboss
+#launchctl setenv IDEA_VM_OPTIONS $HOME/data/etc/idea.vmoptions
+#launchctl setenv JBOSS_HOME $BINDIR/jboss
+#export NEO_ENV=LOCAL
 
+# alias
 . ~/.bash_aliases
 
-# proxies
+# completion
+fpath=($HOME/data/etc/zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
+
+# proxy
 location=`networksetup -getcurrentlocation`
 if [ $location = "Office" ]; then
   iapc=scapp-console.swisscom.com
