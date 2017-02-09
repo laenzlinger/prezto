@@ -11,38 +11,4 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to Christof's needs...
-# set global environment variables in ~/data/etc/env.sh
-BINDIR=/Users/tzhlach2/data/bin
-MVN_HOME=$BINDIR/apache-maven
-
-export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
-
-export JAVA_HOME=$(/usr/libexec/java_home)
-export PATH=$PATH:$MVN_HOME/bin
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
-export EDITOR=vim
-
-# alias
-. ~/.bash_aliases
-
-# completion
-fpath=($HOME/data/etc/zsh/completion $fpath)
-autoload -Uz compinit && compinit -i
-
-# proxy
-location=`networksetup -getcurrentlocation`
-if [ $location = "Office" ]; then
-  iapc=scapp-console.swisscom.com
-  export http_proxy=proxy.corproot.net:8079
-  export https_proxy=$http_proxy
-  export no_proxy=api.$iapc,login.$iapc,doppler.$iapc,uaa.$iapc
-  npm config set proxy http://$http_proxy
-  npm config set https-proxy http://$http_proxy
-  git config --global http.proxy http://$http_proxy
-else
-  npm config delete proxy
-  npm config delete https-proxy
-  git config --global --unset http.proxy
-fi
-
+source "$HOME/data/etc/dotzshrc"
