@@ -11,4 +11,4 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to Christof's needs...
-source "$HOME/data/etc/dotzshrc"
+source "$HOME/dev/etc/dotzshrc"
