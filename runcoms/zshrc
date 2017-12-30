@@ -11,6 +11,12 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to Christof's needs...
-if [[ -s "$HOME}/dev/etc/dotzshrc" ]]; then
+
+# java environment
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+# source swisscom development environment
+if [[ -s "$HOME/dev/etc/dotzshrc" ]]; then
   source "$HOME/dev/etc/dotzshrc"
 fi
